@@ -6,8 +6,11 @@
 </p>
 <div align=center><img src="images/nach0_Pub_2.png" width="80%" height="80%" /></div>
 <h2 id="1">Overview</h2>
+
 - nach0 is a multi-domain and multi-task encoder-decoder LLM pre-trained on unlabeled text from scientific literature, patents, and molecule strings to incorporate a range of chemical and linguistic knowledge.
+
 - We employed instruction tuning, where specific task-related instructions are utilized to fine-tune nach0 for the final set of tasks. To train nach0 effectively, we leverage the NeMo framework, enabling efficient parallel optimization of both base and large model versions. 
+
 - Extensive experiments demonstrate that our model outperforms state-of-the-art baselines on single-domain and cross-domain tasks. Furthermore, it can generate high-quality outputs in molecular and textual formats, showcasing its effectiveness in multi-domain setups.
 
 <h2 id="1">Tasks</h2>
