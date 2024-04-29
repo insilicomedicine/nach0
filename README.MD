@@ -4,7 +4,7 @@
 <p align="center">
   📃 <a href="https://arxiv.org/abs/2311.12410" target="_blank">Paper</a> • ⏬ <a href="https://huggingface.co/datasets/insilicomedicine/nach0" target="_blank">Base nach0</a> • ⏬ <a href="https://huggingface.co/datasets/insilicomedicine/nach0" target="_blank">Large nach0</a> <br>
 </p>
-<div align=center><img src="images/nach0_Pub_2.png" width="80%" height="80%" /></div>
+<div align=center><img src="images/nach0_Pub_2.png" width="70%" height="70%" /></div>
 <h2 id="1">Overview</h2>
 
 - nach0 is a multi-domain and multi-task encoder-decoder LLM pre-trained on unlabeled text from scientific literature, patents, and molecule strings to incorporate a range of chemical and linguistic knowledge.
@@ -15,7 +15,7 @@
 
 <h2 id="1">Tasks</h2>
 Datasets used for training and evaluation. Colour represents the type of tasks. Yellow and blue datasets are single-domain, typically requiring regression/classification losses or generation in the target domain (natural language or SMILES strings). Gradients from yellow to blue represent cross-domain generation tasks that require natural language input and SMILES output, or vise versa.
-<div align=center><img src="images/nach0_Pub_1.png" width="80%" height="80%" /></div>
+<div align=center><img src="images/nach0_Pub_1.png" width="70%" height="70%" /></div>
 
 <h2> Model Usage Guide</h2>
 
