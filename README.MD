@@ -17,9 +17,10 @@ Datasets used for training and evaluation. Colour represents the type of tasks. 
 <div align=center><img src="images/nach0_Pub_1.png" width="70%" height="70%" /></div>
 
 <h2> Model Usage Guide</h2>
-To use model for the inference follow the steps.
 
-1. Preprocess the input by replaceing the atom tokens with special tokens. 
+To use model for the inference follow the steps bellow:
+
+1. Preprocess the input by replacing the atom tokens with special tokens. 
 
   ```python
   from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
@@ -68,7 +69,7 @@ To use model for the inference follow the steps.
     tokenizer = AutoTokenizer.from_pretrained('insilicomedicine/nach0_base')
   ```
 
-3. Generate responce to prompt and replace special tokens with cooresponding atom tokens
+3. Generate response to prompt and replace special tokens with corresponding atom tokens
   ```python
   input_text_ids = tokenizer(PROMPT, padding="longest", max_length=512, truncation=True, return_tensors="pt")
   generated_text_ids = model.generate(**input_text_ids, do_sample=True, top_k=100, top_p=0.95, max_length=512)
