@@ -85,6 +85,12 @@ To use model for the inference follow the steps bellow:
 If you use our repository, please cite the following related paper:
 
 ```
-@inproceedings{....
+@article{nach0,
+      title={nach0: Multimodal Natural and Chemical Languages Foundation Model}, 
+      author={Micha Livne and Zulfat Miftahutdinov and Elena Tutubalina and Maksim Kuznetsov and Daniil Polykovskiy and Annika Brundyn and Aastha Jhunjhunwala and Anthony Costa and Alex Aliper and Alán Aspuru-Guzik and Alex Zhavoronkov},
+      year={2024},
+      journal={Chem. Sci.},
+      pages={-},
+      publisher={The Royal Society of Chemistry},
 }
 ```
