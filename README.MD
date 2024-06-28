@@ -29,24 +29,17 @@ To use model for the inference follow the steps bellow:
   import string
   from rdkit import RDLogger
   RDLogger.DisableLog('rdApp.*')
-
-
   atoms_tokens = ['Ag','Al','As','Au','B','Ba','Bi','Br','C','Ca',
                 'Cd','Cl','Co','Cr','Cs','Cu','F','Fe','Ga','Gd',
                 'Ge','H','Hg','I','In','K','Li','M','Mg','Mn',
                 'Mo','N','Na','O','P','Pt','Ru','S','Sb','Sc',
                 'Se','Si','Sn','V','W','Z','Zn','c','e','n','o','p','s']
-
   atoms_tokens = sorted(atoms_tokens, key=lambda s: len(s), reverse=True)
   SMI_REGEX_PATTERN = r"(\[|\]|\(|\)|\.|=|#|-|\+|\\|\/|:|~|@|\?|>>?|\*|\$|\%[0-9]{2}|[0-9]|" + \
                                                                     '|'.join(atoms_tokens) + ")"
   regex = re.compile(SMI_REGEX_PATTERN)
-
-
   def clean_output_sequence(output_sequence):
       return output_sequence.replace('</s>', '').replace('<sm_', '').replace(' sm_', '').replace('>', '').strip()
-
-
   def add_special_symbols(text):
     output = []
     for word in text.split():
@@ -56,8 +49,6 @@ To use model for the inference follow the steps bellow:
         else:
             output.append(word)
     return ' '.join(output)
-
-
   PROMPT = """Given the following reactants and reagents, please provide a possible product. 
             CCN(CC)CC.CCN=C=NCCCN(C)C.CN(C)C=O.Cl.NC1=CC=C(Cl)C=C1N.O.O=C(O)CCCCCNC(=O)C=C1C2=CC=CC=C2C2=CC=CC=C12.OC1=CC=CC2=C1N=NN2.[Cl-].[Na+]"""
   PROMPT = add_special_symbols(PROMPT)
@@ -81,16 +72,50 @@ To use model for the inference follow the steps bellow:
   ```
 
 
+<h4> Usage for Large Model Version </h4>
+
+To use the large model version for inference, please refer to the <a href="https://github.com/NVIDIA/NeMo" target="_blank">NeMo</a> project.
+
+The simplest way to use the large version of the model is to run the <a href="https://github.com/NVIDIA/NeMo/blob/main/examples/nlp/language_modeling/megatron_t5_seq2seq_eval.py" target="_blank">megatron_t5_seq2seq_eval.py</a> or <a href="https://github.com/NVIDIA/NeMo/blob/main/examples/nlp/language_modeling/megatron_t5_seq2seq_finetune.py" target="_blank">megatron_t5_seq2seq_finetune.py</a> script.
+
+Prior to executing the script, prepare the input (prompts) and output (responses) files and set up the config file. The input file should have prompts on each line, which need to be preprocessed using the `add_special_symbols` function mentioned above.
+
+In the configuration file, the following keys should be set:
+
+* Set Input and Target Files:
+  Set the `src_file_name` and `tgt_file_name` fields to the files where the input (prompts) and target (responses) data are stored.
+
+* Specify the Checkpoint Path:
+  Set the `restore_from_path` field to the NeMo checkpoint path.
+
+* Enable Predictions Writing:
+  Set `write_predictions_to_file` to True.
+
+* Define Output File Prefix:
+  Alter the `output_file_path_prefix` field to set the output file prefix.
+
+After completing these steps, run the script to perform inference.
+
+<h3> Usage and License</h3>
+
+Please note that all model weights are exclusively licensed for research purposes. The accompanying dataset is licensed under CC BY 4.0, which permits solely non-commercial usage.
+We emphatically urge all users to adhere to the highest ethical standards when using our models, including maintaining fairness, transparency, and responsibility in their research. Any usage that may lead to harm or pose a detriment to society is strictly forbidden.
+
+
 <h3> References</h3>
 If you use our repository, please cite the following related paper:
 
 ```
-@article{nach0,
-      title={nach0: Multimodal Natural and Chemical Languages Foundation Model}, 
-      author={Micha Livne and Zulfat Miftahutdinov and Elena Tutubalina and Maksim Kuznetsov and Daniil Polykovskiy and Annika Brundyn and Aastha Jhunjhunwala and Anthony Costa and Alex Aliper and Alán Aspuru-Guzik and Alex Zhavoronkov},
-      year={2024},
-      journal={Chem. Sci.},
-      pages={-},
-      publisher={The Royal Society of Chemistry},
+@article{D4SC00966E,
+    author ="Livne, Micha and Miftahutdinov, Zulfat and Tutubalina, Elena and Kuznetsov, Maksim and Polykovskiy, Daniil and Brundyn, Annika and Jhunjhunwala, Aastha and Costa, Anthony and Aliper, Alex and Aspuru-Guzik, Alán and Zhavoronkov, Alex",
+    title  ="nach0: multimodal natural and chemical languages foundation model",
+    journal  ="Chem. Sci.",
+    year  ="2024",
+    volume  ="15",
+    issue  ="22",
+    pages  ="8380-8389",
+    publisher  ="The Royal Society of Chemistry",
+    doi  ="10.1039/D4SC00966E",
+    url  ="http://dx.doi.org/10.1039/D4SC00966E",
 }
 ```
